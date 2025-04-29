@@ -1,4 +1,8 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<TipanData>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("TipanData") ?? throw new InvalidOperationException("Connection string 'TipanData' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
