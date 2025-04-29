@@ -2,7 +2,34 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center p-5">
+    <h1>Bienvenido a mi página principal</h1>
+
+   
+    <img src="https://www.facebook.com/photo.php?fbid=2111208928906343&id=510039569023295&set=a.668403509853566" alt="Meme Favorito" class="meme-img my-4">
+
+    
+    <input type="text" id="campoTexto" class="form-control w-50 mx-auto my-3" placeholder="Escribe algo...">
+
+    
+    <button class="btn btn-outline-info btn-lg" onclick="mostrarAlerta()">
+        Mostrar mensaje
+    </button>
 </div>
+
+@section Scripts {
+    <script>
+        function mostrarAlerta() {
+            const valorTexto = document.getElementById("campoTexto").value;
+            alert("Mi nombre es Jhonatan Joel Tipan Chicaiza, mi hobbie es programar y el valor del campo de texto es: " + valorTexto);
+        }
+    </script>
+}
+
+<style>
+    .meme-img {
+        width: 400px;
+        height: 500px;
+        object-fit: cover;
+    }
+</style>
