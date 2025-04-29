@@ -13,4 +13,6 @@ using TipanExamen.Models;
         }
 
         public DbSet<TipanExamen.Models.Cliente> Cliente { get; set; } = default!;
+
+public DbSet<TipanExamen.Models.PlanRecompensas> PlanRecompensas { get; set; } = default!;
     }
