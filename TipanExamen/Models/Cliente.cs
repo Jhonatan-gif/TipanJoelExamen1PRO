@@ -4,25 +4,24 @@ namespace TipanExamen.Models
 {
     public class Cliente
     {
-        [Key]
-        public int Id { get; set; }
+        [Key] 
+        public int ClienteId { get; set; }
 
-        [Required(ErrorMessage = "El nombre es obligatorio.")]
-        [StringLength(100, ErrorMessage = "El nombre no debe superar los 100 caracteres.")]
+        [Required]
+        [StringLength(100)]
         public string Nombre { get; set; }
 
-        [Range(18, 100, ErrorMessage = "La edad debe estar entre 18 y 100 años.")]
+        [Range(18, 100)]
         public int Edad { get; set; }
 
-        [Required(ErrorMessage = "El correo electrónico es obligatorio.")]
-        [EmailAddress(ErrorMessage = "El correo no tiene un formato válido.")]
+        [Required]
+        [EmailAddress]
         public string Correo { get; set; }
 
         [Required]
         public bool EsActivo { get; set; }
 
         [DataType(DataType.Date)]
-        [Required(ErrorMessage = "La fecha de registro es obligatoria.")]
         public DateTime FechaRegistro { get; set; }
     }
 }
