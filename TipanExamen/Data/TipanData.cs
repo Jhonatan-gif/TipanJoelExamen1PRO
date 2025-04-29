@@ -5,16 +5,24 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TipanExamen.Models;
 
-    public class TipanData : DbContext
+public class TipanData : DbContext
+{
+    public TipanData(DbContextOptions<TipanData> options)
+        : base(options)
     {
-        public TipanData (DbContextOptions<TipanData> options)
-            : base(options)
-        {
-        }
-
-        public DbSet<TipanExamen.Models.Cliente> Cliente { get; set; } = default!;
-
-public DbSet<TipanExamen.Models.PlanRecompensas> PlanRecompensas { get; set; } = default!;
-
-public DbSet<TipanExamen.Models.Reserva> Reserva { get; set; } = default!;
     }
+
+    public DbSet<Cliente> Cliente { get; set; } = default!;
+    public DbSet<PlanRecompensas> PlanRecompensas { get; set; } = default!;
+    public DbSet<Reserva> Reserva { get; set; } = default!;
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        // Configuración para evitar la advertencia del decimal truncado
+        modelBuilder.Entity<Reserva>()
+            .Property(r => r.ValorPagar)
+            .HasPrecision(18, 2);
+    }
+}
